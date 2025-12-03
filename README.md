@@ -12,8 +12,8 @@ A simple containerized Flask application integrated with Redis, orchestrated usi
 ## Ports
 
 - Flask app: 3000  
-- Redis: 6379 (host 6380 optional)  
-- Nginx: 3000 (optional reverse proxy)
+- Redis: 6379 
+- Nginx: 3000 
 
 ## Docker Compose Services
 
