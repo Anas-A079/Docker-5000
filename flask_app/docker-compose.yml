@@ -1,83 +1,37 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 services:
   web:
     build: .
-=======
-version: "3"
-services:
-  web:
-    build: ./flask_app
-    ports:
-      - "3000"
->>>>>>> 3b45b0ec005655bd1fb57ab7b7040052daa6874f
     environment:
       REDIS_HOST: redis
       REDIS_PORT: 6379
     depends_on:
       - redis
-<<<<<<< HEAD
     networks:
       - app-network
-    restart: unless-stopped
 
   redis:
     image: redis:latest
     command: ["redis-server", "--appendonly", "yes"]
     ports:
-      - "6380:6379"   # optional: host port 6380 to avoid conflicts
+      - "6379:6379"
     volumes:
       - redis-data:/data
     networks:
       - app-network
-    restart: unless-stopped
 
   nginx:
     image: nginx:latest
     ports:
-      - "3000:80"     # host:container
+      - "3000:3000"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
       - web
     networks:
       - app-network
-    restart: unless-stopped
 
 volumes:
   redis-data:
 
 networks:
   app-network:
-    driver: bridge
-=======
-version: '3.8'
-
-services:
-  web:
-    image: my-flask-app:muiltistage 
-    ports:
-      - "5000:5000"
-    depends_on:
-      - mydb
-
-  mydb:
-    image: mysql:8
-    environment:
-      MYSQL_ROOT_PASSWORD: my-secret-pw
-
-
-
->>>>>>> c1c685270a14c86ac9451a75d79194140ef219e1
-=======
-
-  redis:
-    image: redis:latest
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis-data:/data
-
-volumes:
-  redis-data:
->>>>>>> 3b45b0ec005655bd1fb57ab7b7040052daa6874f
