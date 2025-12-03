@@ -1,0 +1,20 @@
+# Stage 1: Build dependencies
+FROM python:3.8-slim
+
+WORKDIR /app
+
+# Install dependencies
+RUN pip install Flask redis
+
+# Copy app files
+COPY . .
+
+# Expose port
+EXPOSE 3000
+
+# Environment variables (optional defaults)
+ENV REDIS_HOST=redis
+ENV REDIS_PORT=6379
+
+# Start Flask app
+CMD ["python", "app.py"]
