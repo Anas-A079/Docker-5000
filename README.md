@@ -1,4 +1,4 @@
-<pre>
+
 # Flask + Redis Dockerized App
 
 A simple containerized Flask application integrated with Redis, orchestrated using Docker Compose.
